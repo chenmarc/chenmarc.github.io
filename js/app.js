@@ -66,30 +66,29 @@ function initParallax() {
 
 //Accordion (Previous Work section -- and now maybe education as well...
 function initAccordion() {
-    const accordion = document.querySelector('.accordion-wrapper');
+    const accordions = document.querySelectorAll('.accordion-wrapper');
     
-    if (!accordion) return;
-
-    accordion.addEventListener('click', (e) => {
-        const header = e.target.closest('.accordion-header');
-        
-        if (!header) return;
-
-        const item = header.parentElement;
-        const content = item.querySelector('.accordion-content');
-        const isExpanded = header.getAttribute('aria-expanded') === 'true';
-
-        //Toggle current
-        header.setAttribute('aria-expanded', !isExpanded);
-        
-        if (!isExpanded) {
-            // Open: Set height to scrollHeight (actual content height)
-            content.style.maxHeight = content.scrollHeight + "px";
-            header.querySelector('.icon').textContent = '-';
-        } else {
-            // Close
-            content.style.maxHeight = null;
-            header.querySelector('.icon').textContent = '+';
-        }
+    if (!accordions.length) return;
+    accordions.forEach(accordion => {
+        accordion.addEventListener('click', (e) => {
+            const header = e.target.closest('.accordion-header');
+           
+            if (!header) return;
+            const item = header.parentElement;
+            const content = item.querySelector('.accordion-content');
+            const isExpanded = header.getAttribute('aria-expanded') === 'true';
+            //Toggle current
+            header.setAttribute('aria-expanded', !isExpanded);
+           
+            if (!isExpanded) {
+                // Open: Set height to scrollHeight (actual content height)
+                content.style.maxHeight = content.scrollHeight + "px";
+                header.querySelector('.icon').textContent = '-';
+            } else {
+                // Close
+                content.style.maxHeight = null;
+                header.querySelector('.icon').textContent = '+';
+            }
+        });
     });
 }           
