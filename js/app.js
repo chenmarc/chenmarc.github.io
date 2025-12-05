@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initAccordion();
     initParallax();
+    initContactForm(); // Email function test
 });
 
 /**
@@ -92,3 +93,37 @@ function initAccordion() {
         });
     });
 }           
+
+/*
+	Email form section
+*/
+
+// It's allegedly OK for me to have all 3 of these public API key, service ID and templateID in clear text 
+(function() {
+    emailjs.init("3De2b7Mbti7e03ONz");
+})();
+
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const formData = {
+            name: form.name.value,
+            email: form.email.value,
+            message: form.message.value
+        };
+
+        emailjs.send("service_4l5nwii", "template_3y9vasc", formData)
+            .then(() => {
+                alert('Success! Thank you for reaching out - Marc will get back to you shortly 💫');
+                form.reset();
+            })
+            .catch((error) => {
+                console.error('EmailJS error:', error);
+                alert('Failed to send message. Please try again.');
+            });
+    });
+}
