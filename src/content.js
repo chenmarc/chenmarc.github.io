@@ -28,7 +28,7 @@ export const experience = [
     title: 'Software QA Engineer I',
     company: 'Open Dental Software',
     paragraphs: [
-      'Responsible for helping fix bugs and extend a large enterprise codebase serving dental healthcare providers. I primarily work with C#, the .NET Framework, and MySQL.',
+      'I currently work as a software developer helping to fix bugs and extend a large enterprise codebase for an application that serves dental healthcare providers. I primarily work with C#, the .NET Framework, and MySQL.',
     ],
     links: [
       { label: 'Open Dental Website', href: 'www.opendental.com' },
